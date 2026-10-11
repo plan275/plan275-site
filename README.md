@@ -6,7 +6,7 @@ plan275 앱의 공개 페이지(지원, 개인정보처리방침). GitHub Pages�
 
 ```
 plan275-site/
-├── index.html         # 앱 목록
+├── index.html         # 빈 페이지 (용도는 나중에 정한다)
 ├── style.css          # 모든 페이지가 함께 쓰는 스타일
 ├── 404.html
 ├── .nojekyll          # Jekyll 처리 없이 파일 그대로 배포
@@ -28,7 +28,7 @@ plan275-site/
   `robots.txt`로 크롤링을 막지 않는다. 막으면 검색 엔진이 noindex를 읽지 못해 외부 링크로 주소가 색인될 수 있다.
 - 링크와 `style.css`는 상대 경로로 쓴다. `404.html`만 어느 경로에서나 쓰이므로 `/style.css`를 쓴다 (사용자 도메인 루트 기준).
 - 한국어와 영어 페이지는 서로 링크한다 (상단 `nav`).
-- 새 앱은 `sararak/`을 복사해 내용을 바꾸고, `index.html` 목록에 더한다.
+- 새 앱은 `sararak/`을 복사해 내용을 바꾼다. 루트 `index.html`에는 링크를 두지 않는다 (빈 페이지).
 
 ## 개인정보처리방침 원문
 
