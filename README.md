@@ -58,6 +58,6 @@ python3 -m http.server -d . 8000   # http://localhost:8000/
 ## 할 일
 
 - [x] GitHub 공개 저장소를 만들고 push한다 (2026-10-20, 조직 `plan275`의 `plan275/plan275-site`). 커밋 작성자는 `plan275 <team.plan275@gmail.com>`이다 (저장소 로컬 `user.email`)
-- [ ] Pages를 켜고 도메인을 연결한다 (DNS, Enforce HTTPS). 도메인은 `plan275.com` (2026-10-20, 가비아). `CNAME` 파일은 넣었다
-- [ ] 공개한 날이 방침 시행일(2026-10-11)보다 늦으면 시행일을 원문과 함께 고친다
+- [x] Pages를 켜고 도메인을 연결한다 (2026-10-20 공개, Let's Encrypt 인증서). 도메인은 `plan275.com` (2026-10-20, 가비아). `CNAME` 파일은 넣었다
+- [x] 시행일을 공개한 날(2026-10-20)로 고쳤다 (원문과 함께)
 - [ ] 루트 `index.html`의 용도를 정한다 (지금은 빈 페이지)
