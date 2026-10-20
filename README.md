@@ -10,6 +10,7 @@ plan275-site/
 ├── style.css          # 모든 페이지가 함께 쓰는 스타일
 ├── 404.html
 ├── .nojekyll          # Jekyll 처리 없이 파일 그대로 배포
+├── CNAME              # 사용자 도메인 plan275.com
 └── <앱>/              # 앱마다 디렉터리 하나
     ├── index.html     # 지원 페이지 (한국어)
     ├── privacy/       # 개인정보처리방침 (한국어)
@@ -57,6 +58,6 @@ python3 -m http.server -d . 8000   # http://localhost:8000/
 ## 할 일
 
 - [ ] GitHub 공개 저장소를 만들고 push한다 (아직 원격이 없다. 2026-10-11 기준 로컬 커밋만 있다)
-- [ ] Pages를 켜고 도메인을 연결한다 (`CNAME`, DNS, Enforce HTTPS). 도메인은 나중에 정한다
+- [ ] Pages를 켜고 도메인을 연결한다 (DNS, Enforce HTTPS). 도메인은 `plan275.com` (2026-10-20, 가비아). `CNAME` 파일은 넣었다
 - [ ] 공개한 날이 방침 시행일(2026-10-11)보다 늦으면 시행일을 원문과 함께 고친다
 - [ ] 루트 `index.html`의 용도를 정한다 (지금은 빈 페이지)
