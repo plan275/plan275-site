@@ -1,6 +1,8 @@
 /* 모든 페이지가 함께 쓰는 스타일. 꾸밈 없이 읽기 좋게만 한다. */
 :root {
   color-scheme: light dark;
+  /* 페이지는 위아래로만 움직인다. 폭이 맞아도 iOS 웹 뷰가 좌우로 튕기는 것을 막는다 */
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -52,4 +54,6 @@ td {
   padding: 0.4rem 0.5rem;
   text-align: left;
   vertical-align: top;
+  /* 표는 칸마다 가장 긴 단어보다 좁아지지 않아, 글자를 키우면 화면 밖으로 넘친다. 넘칠 때만 단어 안에서 줄을 바꾼다 */
+  overflow-wrap: anywhere;
 }
