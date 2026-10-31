@@ -47,7 +47,7 @@ plan275-site/
 - 한국어와 영어 페이지는 서로 링크한다 (상단 `nav`, 2026-10-22에 되살렸다). Play Console에는 방침 URL을 하나만 넣을 수 있어 영어판을 넣고, 거기서 한국어판으로 간다.
 - 앱은 방침을 주소 끝에 `#app`을 붙여 앱 안 웹 뷰로 연다. 그때는 다른 페이지로 옮겨 가지 않게 링크를 없앤다: 방침 페이지 `<body>` 맨 앞의 `<span id="app"></span>`와 `style.css`의 `#app:target` 규칙이 `nav`를 숨기고, 본문의 사이트 안 링크(`class="site-link"`)를 누를 수 없게 한다.
   방침 본문에 사이트 안 링크를 더하면 `class="site-link"`를 붙인다. 바깥 링크(다른 사이트, `mailto:`)는 앱이 밖으로 연다.
-- 새 앱은 `sararak/`을 복사해 내용을 바꾼다. 언어별 페이지는 `ko/`, `en/` 아래에 두고 앱 디렉터리의 `index.html`은 `en/`으로 보낸다 (GitHub Pages에 서버 리다이렉트가 없어 0초 `meta refresh` + `canonical`). 루트 `index.html`에는 링크를 두지 않는다 (빈 페이지).
+- 새 앱은 `sararak/`을 복사해 내용을 바꾼다. 언어별 페이지는 `ko/`, `en/` 아래에 두고 앱 디렉터리의 `index.html`은 `en/`으로 보낸다 (GitHub Pages에 서버 리다이렉트가 없어 0초 `meta refresh` + `canonical`. 넘어가는 동안 글자가 비치지 않게 대체 링크는 CSS로 숨겼다가 2초 뒤에 보이고, 바탕은 홍보 페이지와 같은 색으로 인라인 CSS에 둔다). 루트 `index.html`에는 링크를 두지 않는다 (빈 페이지).
 
 ## 개인정보처리방침 원문
 

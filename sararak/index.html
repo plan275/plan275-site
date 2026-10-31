@@ -7,7 +7,15 @@
 <!-- GitHub Pages에는 서버 리다이렉트가 없다. 0초 meta refresh는 검색 엔진이 영구 리다이렉트로 다룬다 -->
 <meta http-equiv="refresh" content="0; url=en/">
 <link rel="canonical" href="https://plan275.com/sararak/en/">
-<link rel="stylesheet" href="../style.css">
+<!-- 넘어가는 동안 글자가 비치지 않게 링크를 숨겼다가, refresh가 막힌 환경에서만 2초 뒤 보인다.
+     외부 CSS를 기다리지 않게 인라인으로 두고, 바탕은 홍보 페이지와 같은 색이라 넘어갈 때 번쩍이지 않는다 -->
+<style>
+html { background: #0e0e0f; color-scheme: dark; }
+body { margin: 0; padding: 1rem; color: #ede8df; font-family: system-ui, sans-serif; }
+a { color: #c8a46a; }
+main { opacity: 0; animation: show 0s 2s forwards; }
+@keyframes show { to { opacity: 1; } }
+</style>
 </head>
 <body>
 <main>
