@@ -1,6 +1,6 @@
 # plan275-site
 
-plan275 앱의 공개 페이지(지원, 개인정보처리방침). GitHub Pages로 배포한다.
+plan275 앱의 공개 페이지(홍보·지원, 개인정보처리방침). GitHub Pages로 배포한다.
 
 ## 구조
 
@@ -9,32 +9,45 @@ plan275-site/
 ├── index.html         # 빈 페이지 (용도는 나중에 정한다)
 ├── style.css          # 모든 페이지가 함께 쓰는 스타일
 ├── 404.html
+├── robots.txt         # 크롤링 허용 + 사이트맵 위치
+├── sitemap.xml        # 검색에 노출하는 페이지 목록 (hreflang 포함)
 ├── .nojekyll          # Jekyll 처리 없이 파일 그대로 배포
 ├── CNAME              # 사용자 도메인 plan275.com
 └── <앱>/              # 앱마다 디렉터리 하나
-    ├── index.html     # 언어 선택 (한국어, English 링크만)
-    ├── ko/            # 한국어: index.html(지원), privacy/(개인정보처리방침)
+    ├── index.html     # en/으로 리다이렉트 (사라락)
+    ├── sararak.css    # 홍보 페이지 전용 스타일 (사라락)
+    ├── img/           # 아이콘, 공유 이미지(og), 화면 캡처 (언어별 ko/, en/)
+    ├── ko/            # 한국어: index.html(홍보·지원), privacy/(개인정보처리방침)
     └── en/            # 영어: index.html, privacy/
 ```
 
 | 페이지 | 경로 |
 |---|---|
-| 사라락 언어 선택 | `/sararak/` |
-| 사라락 지원 | `/sararak/ko/`, `/sararak/en/` |
+| 사라락 (리다이렉트) | `/sararak/` → `/sararak/en/` |
+| 사라락 홍보·지원 | `/sararak/ko/`, `/sararak/en/` |
 | 사라락 개인정보처리방침 | `/sararak/ko/privacy/`, `/sararak/en/privacy/` |
 
+- 2026-10-31에 지원 페이지를 홍보 페이지로 키웠다 (문의·방침 링크는 그 안의 절). App Store 지원 URL(ko·en)과 Play 웹사이트(`/sararak/`)가 그대로 홍보 페이지로 온다. `/sararak/`은 언어 선택에서 `en/` 리다이렉트로 바꿨다 (사용자 결정).
 - 2026-10-24에 한국어 페이지를 `/sararak/`·`/sararak/privacy/`에서 `ko/` 아래로 옮겼다 (출시 전, 영어와 같은 구조로). 옛 방침 주소는 남기지 않았다.
 
 ## 규칙
 
-- 빌드 도구 없이 HTML을 직접 쓴다. 스타일은 `style.css` 하나만 쓰고, 꾸밈 요소(이미지, 웹 글꼴, 스크립트)를 넣지 않는다.
-- **모든 페이지에 `<meta name="robots" content="noindex">`를 둔다** (검색 결과에 나오지 않게).
-  `robots.txt`로 크롤링을 막지 않는다. 막으면 검색 엔진이 noindex를 읽지 못해 외부 링크로 주소가 색인될 수 있다.
+- 빌드 도구 없이 HTML을 직접 쓴다. 웹 글꼴과 스크립트(실행되는 JS)를 넣지 않는다. 구조화 데이터(`<script type="application/ld+json">`)는 데이터라 예외다.
+  - 방침·404·루트 페이지는 공통 `style.css`만 쓰고 꾸밈 요소를 넣지 않는다.
+  - 앱 홍보 페이지(`<앱>/ko/`, `<앱>/en/`)는 앱 디렉터리의 전용 CSS(`sararak.css`)를 쓰고 이미지(아이콘, 화면 캡처)를 넣는다 (2026-10-31 사용자 결정).
+- **검색 노출** (2026-10-31 사용자 결정, 그 전에는 모든 페이지가 noindex였다):
+  - 색인을 허용하는 페이지는 앱 홍보 페이지와 리다이렉트 페이지(`/sararak/`)뿐이다. `sitemap.xml`에 홍보 페이지를 적는다.
+  - **방침·404·루트 `index.html`은 `<meta name="robots" content="noindex">`를 둔다.** 한국어 방침에는 보호책임자 실명이 있어 검색 결과에 나오지 않게 한다.
+  - `robots.txt`로 크롤링을 막지 않는다. 막으면 검색 엔진이 noindex를 읽지 못해 외부 링크로 주소가 색인될 수 있다.
+- **홍보 페이지의 SEO 요소**: `title`, `meta description`, 절대 주소 `canonical`, `hreflang`(ko, en, x-default=en), Open Graph·Twitter 카드(언어별 `img/<언어>/og.png`), `MobileApplication` 구조화 데이터, 이미지의 `alt`·`width`·`height`.
+  첫 화면 이미지 말고는 `loading="lazy"`. 두 언어판의 내용을 같게 유지하고, 고치면 `sitemap.xml`의 `lastmod`도 바꾼다.
+- **홍보 문구 원칙** (2026-10-31 사용자 결정): 쓰는 상황(공부, 잠들기 전 등)과 소개 문구는 쓰되 효과(수면 개선, 스트레스 완화 등)를 주장하지 않는다. 기능 설명은 앱 저장소의 스토어 문구(`docs/agent_docs/GUIDE-20261024-0001-store-listing.md`)와 같은 사실만 쓴다. 앱이 바뀌면 그 문서의 "앱이 바뀌면 함께 고칠 곳"을 따라 이 페이지도 고친다.
+- **이미지**: 화면 캡처는 Play 스토어용 원본(1080×1920, 1920×1080)을 `cwebp -q 80 -resize 540 960`(가로는 `960 540`)으로 줄인다. `icon.svg`는 앱 저장소 `scripts/icon/make_icons.py`의 `svg('any')` 출력이다. 아이콘이나 화면이 바뀌면 다시 만든다.
 - 링크와 `style.css`는 상대 경로로 쓴다. `404.html`만 어느 경로에서나 쓰이므로 `/style.css`를 쓴다 (사용자 도메인 루트 기준).
 - 한국어와 영어 페이지는 서로 링크한다 (상단 `nav`, 2026-10-22에 되살렸다). Play Console에는 방침 URL을 하나만 넣을 수 있어 영어판을 넣고, 거기서 한국어판으로 간다.
 - 앱은 방침을 주소 끝에 `#app`을 붙여 앱 안 웹 뷰로 연다. 그때는 다른 페이지로 옮겨 가지 않게 링크를 없앤다: 방침 페이지 `<body>` 맨 앞의 `<span id="app"></span>`와 `style.css`의 `#app:target` 규칙이 `nav`를 숨기고, 본문의 사이트 안 링크(`class="site-link"`)를 누를 수 없게 한다.
   방침 본문에 사이트 안 링크를 더하면 `class="site-link"`를 붙인다. 바깥 링크(다른 사이트, `mailto:`)는 앱이 밖으로 연다.
-- 새 앱은 `sararak/`을 복사해 내용을 바꾼다. 언어별 페이지는 `ko/`, `en/` 아래에 두고 앱 디렉터리의 `index.html`은 언어 선택만 한다. 루트 `index.html`에는 링크를 두지 않는다 (빈 페이지).
+- 새 앱은 `sararak/`을 복사해 내용을 바꾼다. 언어별 페이지는 `ko/`, `en/` 아래에 두고 앱 디렉터리의 `index.html`은 `en/`으로 보낸다 (GitHub Pages에 서버 리다이렉트가 없어 0초 `meta refresh` + `canonical`). 루트 `index.html`에는 링크를 두지 않는다 (빈 페이지).
 
 ## 개인정보처리방침 원문
 
@@ -66,4 +79,6 @@ python3 -m http.server -d . 8000   # http://localhost:8000/
 - [x] GitHub 공개 저장소를 만들고 push한다 (2026-10-20, 조직 `plan275`의 `plan275/plan275-site`). 커밋 작성자는 `plan275 <team.plan275@gmail.com>`이다 (저장소 로컬 `user.email`)
 - [x] Pages를 켜고 도메인을 연결한다 (2026-10-20 공개, Let's Encrypt 인증서). 도메인은 `plan275.com` (2026-10-20, 가비아). `CNAME` 파일은 넣었다
 - [x] 시행일을 공개한 날(2026-10-20)로 고쳤다 (원문과 함께)
-- [ ] 루트 `index.html`의 용도를 정한다 (지금은 빈 페이지)
+- [ ] 루트 `index.html`의 용도를 정한다 (지금은 빈 페이지). Google 검색 결과의 파비콘은 호스트 루트 페이지의 것만 쓰므로, 루트에 아이콘이 없으면 사라락 페이지에도 기본 아이콘이 보인다
+- [ ] Google Search Console과 네이버 서치어드바이저에 `plan275.com`을 등록하고 `sitemap.xml`을 제출한다 (소유 확인은 사용자)
+- [ ] 스토어에 출시되면 홍보 페이지의 "출시 예정"을 스토어 링크(배지)로 바꾸고, 구조화 데이터에 스토어 주소(`sameAs` 등)를 더한다

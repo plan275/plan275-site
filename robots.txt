@@ -1,0 +1,5 @@
+# 크롤링은 막지 않는다. 검색에서 뺄 페이지는 각 페이지의 noindex로 뺀다 (README)
+User-agent: *
+Allow: /
+
+Sitemap: https://plan275.com/sitemap.xml
