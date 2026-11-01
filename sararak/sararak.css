@@ -199,6 +199,14 @@ h3 {
   padding-left: 1.2rem;
 }
 
+/* 가로·세로 캡처 한 쌍. 좁은 화면에서는 위아래로 쌓는다 */
+.pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
 /* 자주 묻는 질문 */
 dl {
   margin: 0;
@@ -260,5 +268,18 @@ footer a {
 
   .feature.wide {
     grid-template-columns: 1fr 1.6fr;
+  }
+
+  /* 넓은 화면에서는 나란히 둔다. 늘어나는 비율을 각 캡처의 가로/세로 비(--ratio)로 주면 두 캡처의 높이가 같아진다 */
+  .pair {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .pair .shot {
+    flex: var(--ratio) 1 0;
+    min-width: 0;
+    max-width: none;
+    margin: 0;
   }
 }

@@ -81,5 +81,5 @@ python3 -m http.server -d . 8000   # http://localhost:8000/
 - [x] 시행일을 공개한 날(2026-10-20)로 고쳤다 (원문과 함께)
 - [ ] 루트 `index.html`의 용도를 정한다 (지금은 빈 페이지). Google 검색 결과의 파비콘은 호스트 루트 페이지의 것만 쓰므로, 루트에 아이콘이 없으면 사라락 페이지에도 기본 아이콘이 보인다
 - [ ] Google Search Console과 네이버 서치어드바이저에 `plan275.com`을 등록하고 `sitemap.xml`을 제출한다 (소유 확인은 사용자)
-- [x] "폴더블과 아이폰 듀오" 절에 화면 캡처를 더한다. 2026-11-01에 아이폰 듀오 펼침 화면(`5-duo.webp`)을 넣었다. 시뮬레이터는 `simctl`로 펼칠 수 없어 사용자가 DeviceHub에서 펼치고, `simctl io <기기> screenshot --display=3`으로 찍어 `cwebp -q 80 -resize 960 0`으로 줄였다 (상태 막대는 `simctl status_bar override --time 9:41`로 정리)
+- [x] "폴더블과 아이폰 듀오" 절에 화면 캡처를 더한다. 2026-11-01에 아이폰 듀오 펼침 화면을 가로(`5-duo.webp`)와 세로(`6-duo-upright.webp`) 두 장으로 넣었다 (넓은 화면에서는 같은 높이로 나란히, 좁은 화면에서는 위아래로). 시뮬레이터는 `simctl`로 펼칠 수 없어 사용자가 DeviceHub에서 펼치고, `simctl io <기기> screenshot --display=3`으로 찍어 `cwebp -q 80 -resize 960 0`(세로는 `540 0`)으로 줄였다 (상태 막대는 `simctl status_bar override --time 9:41`로 정리)
 - [ ] 스토어에 출시되면 홍보 페이지의 "출시 예정"을 스토어 링크(배지)로 바꾸고, 구조화 데이터에 스토어 주소(`sameAs` 등)를 더한다
