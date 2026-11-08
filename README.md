@@ -87,7 +87,7 @@ python3 -m http.server -d . 8000   # http://localhost:8000/
 - [ ] 루트 `index.html`의 용도를 정한다 (지금은 빈 페이지). Google 검색 결과의 파비콘은 호스트 루트 페이지의 것만 쓰므로, 루트에 아이콘이 없으면 사라락 페이지에도 기본 아이콘이 보인다
 - [x] Google Search Console에 `plan275.com`을 **도메인 속성**으로 등록했다 (2026-11-08). 소유 확인은 가비아 DNS의 TXT 레코드(`google-site-verification=…`, 호스트 `@`)다. **이 레코드를 지우지 않는다** (Google이 주기적으로 다시 확인해, 지우면 소유권이 풀린다).
   홍보 페이지 두 곳(`/sararak/en/`, `/sararak/ko/`)의 색인 생성을 요청했다 (같은 날). 방침 페이지가 "noindex 태그에 의해 제외됨", `/sararak/`이 "리디렉션이 포함된 페이지"로 나오는 것은 의도한 결과다.
-  - [ ] `sitemap.xml` 제출 확인 (Sitemaps 화면에서 상태 "성공", 발견된 페이지 2)
+  - [x] `sitemap.xml` 제출 (2026-11-08). 페이지를 더하거나 고치면 `lastmod`만 바꾸면 되고, 다시 제출할 필요는 없다 (Google이 주기적으로 다시 읽는다)
 - [ ] 네이버 서치어드바이저에 `https://plan275.com`을 등록하고 `sitemap.xml`을 제출한다. 네이버는 DNS 확인이 없어 HTML 파일(`naver….html`)이나 meta 태그로 소유를 확인한다 (파일·태그는 사용자가 받는다)
 - [x] "폴더블과 아이폰 듀오" 절에 화면 캡처를 더한다. 2026-11-01에 아이폰 듀오 펼침 화면을 가로(`5-duo.webp`)와 세로(`6-duo-upright.webp`) 두 장으로 넣었다 (넓은 화면에서는 같은 높이로 나란히, 좁은 화면에서는 위아래로). 시뮬레이터는 `simctl`로 펼칠 수 없어 사용자가 DeviceHub에서 펼치고, `simctl io <기기> screenshot --display=3`으로 찍어 `cwebp -q 80 -resize 960 0`(세로는 `540 0`)으로 줄였다 (상태 막대는 `simctl status_bar override --time 9:41`로 정리). Android 폴더블 테이블탑 캡처는 넣지 않는다 (2026-11-01 사용자 결정. 아이폰 듀오를 펼쳐 세로로 세운 화면과 같은 테이블탑 배치다)
 - [x] 스토어에 출시되면 홍보 페이지의 "출시 예정"을 스토어 링크(배지)로 바꾸고, 구조화 데이터에 스토어 주소를 더한다 (2026-11-08. iOS는 2026-11-05 출시. `installUrl`·`offers`, 스마트 앱 배너)
