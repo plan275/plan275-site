@@ -47,7 +47,7 @@ plan275-site/
   - `<meta name="apple-itunes-app" content="app-id=6825819206">`: 아이폰 Safari에서 페이지 위에 받기·열기 배너가 뜬다.
   - 구조화 데이터의 `offers` 가격은 한국어판 KRW 6600, 영어판 USD 3.99다. App Store 가격이 바뀌면(Apple의 환율·세금 조정 포함) 함께 고친다. 지금 가격은 `https://itunes.apple.com/lookup?id=6825819206&country=kr`(`us`)로 본다.
 - **홍보 문구 원칙** (2026-10-31 사용자 결정): 쓰는 상황(공부, 잠들기 전 등)과 소개 문구는 쓰되 효과(수면 개선, 스트레스 완화 등)를 주장하지 않는다. 기능 설명은 앱 저장소의 스토어 문구(`docs/agent_docs/GUIDE-20261024-0001-store-listing.md`)와 같은 사실만 쓴다. 앱이 바뀌면 그 문서의 "앱이 바뀌면 함께 고칠 곳"을 따라 이 페이지도 고친다.
-- **이미지**: 세로 화면 캡처(`1-main`, `2-timer`, `3-favorites`)는 App Store용 iPhone 스크린샷 원본(1206×2622, 앱 저장소 밖 `~/Downloads/sararak-screenshots/{ko,en}/`)을 `cwebp -q 80 -resize 540 0`으로 줄인다 (540×1175, 2026-11-08 Android 캡처에서 바꿨다). 가로 캡처(`4-landscape`)는 아직 Android 캡처(1920×1080을 `960 540`으로)다. `icon.svg`는 앱 저장소 `scripts/icon/make_icons.py`의 `svg('any')` 출력이다. 아이콘이나 화면이 바뀌면 다시 만든다.
+- **이미지**: 세로 화면 캡처(`1-main`, `2-timer`, `3-favorites`)는 App Store용 iPhone 스크린샷 원본(1206×2622, 앱 저장소 밖 `~/Downloads/sararak-screenshots/{ko,en}/`)을 `cwebp -q 80 -resize 540 0`으로 줄인다 (540×1175, 2026-11-08 Android 캡처에서 바꿨다). 가로 캡처(`4-landscape`)는 iPhone 17 시뮬레이터를 DeviceHub에서 돌려 `simctl io <기기> screenshot`으로 찍고(2622×1206, 가로에서는 iOS가 상태 막대를 숨긴다) `cwebp -q 80 -resize 960 0`으로 줄인다 (960×442). `icon.svg`는 앱 저장소 `scripts/icon/make_icons.py`의 `svg('any')` 출력이다. 아이콘이나 화면이 바뀌면 다시 만든다.
 - 링크와 `style.css`는 상대 경로로 쓴다. `404.html`만 어느 경로에서나 쓰이므로 `/style.css`를 쓴다 (사용자 도메인 루트 기준).
 - 한국어와 영어 페이지는 서로 링크한다 (상단 `nav`, 2026-10-22에 되살렸다). Play Console에는 방침 URL을 하나만 넣을 수 있어 영어판을 넣고, 거기서 한국어판으로 간다.
 - 앱은 방침을 주소 끝에 `#app`을 붙여 앱 안 웹 뷰로 연다. 그때는 다른 페이지로 옮겨 가지 않게 링크를 없앤다: 방침 페이지 `<body>` 맨 앞의 `<span id="app"></span>`와 `style.css`의 `#app:target` 규칙이 `nav`를 숨기고, 본문의 사이트 안 링크(`class="site-link"`)를 누를 수 없게 한다.
@@ -88,4 +88,4 @@ python3 -m http.server -d . 8000   # http://localhost:8000/
 - [ ] Google Search Console과 네이버 서치어드바이저에 `plan275.com`을 등록하고 `sitemap.xml`을 제출한다 (소유 확인은 사용자)
 - [x] "폴더블과 아이폰 듀오" 절에 화면 캡처를 더한다. 2026-11-01에 아이폰 듀오 펼침 화면을 가로(`5-duo.webp`)와 세로(`6-duo-upright.webp`) 두 장으로 넣었다 (넓은 화면에서는 같은 높이로 나란히, 좁은 화면에서는 위아래로). 시뮬레이터는 `simctl`로 펼칠 수 없어 사용자가 DeviceHub에서 펼치고, `simctl io <기기> screenshot --display=3`으로 찍어 `cwebp -q 80 -resize 960 0`(세로는 `540 0`)으로 줄였다 (상태 막대는 `simctl status_bar override --time 9:41`로 정리). Android 폴더블 테이블탑 캡처는 넣지 않는다 (2026-11-01 사용자 결정. 아이폰 듀오를 펼쳐 세로로 세운 화면과 같은 테이블탑 배치다)
 - [x] 스토어에 출시되면 홍보 페이지의 "출시 예정"을 스토어 링크(배지)로 바꾸고, 구조화 데이터에 스토어 주소를 더한다 (2026-11-08. iOS는 2026-11-05 출시. `installUrl`·`offers`, 스마트 앱 배너)
-- [ ] 가로 화면 캡처(`4-landscape.webp`)를 iPhone 캡처로 바꾼다. `simctl`로는 회전할 수 없어 사용자가 DeviceHub에서 돌려야 한다
+- [x] 가로 화면 캡처(`4-landscape.webp`)를 iPhone 캡처로 바꾼다 (2026-11-08)
