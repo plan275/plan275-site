@@ -41,7 +41,7 @@ plan275-site/
   - 색인을 허용하는 페이지는 앱 홍보 페이지와 리다이렉트 페이지(루트, `/sararak/`)뿐이다. 리다이렉트 페이지는 noindex 없이 `canonical`을 홍보 페이지로 두어, 들어오는 링크의 신호가 홍보 페이지로 모이게 한다. `sitemap.xml`에 홍보 페이지를 적는다.
   - **방침·404 페이지는 `<meta name="robots" content="noindex">`를 둔다.** (루트 `index.html`도 2026-11-08 리다이렉트로 바꾸기 전에는 noindex였다.) 한국어 방침에는 보호책임자 실명이 있어 검색 결과에 나오지 않게 한다.
   - `robots.txt`로 크롤링을 막지 않는다. 막으면 검색 엔진이 noindex를 읽지 못해 외부 링크로 주소가 색인될 수 있다.
-- **홍보 페이지의 SEO 요소**: `title`, `meta description`, 절대 주소 `canonical`, `hreflang`(ko, en, x-default=en), Open Graph·Twitter 카드(언어별 `img/<언어>/og.png`), `MobileApplication` 구조화 데이터, 이미지의 `alt`·`width`·`height`.
+- **홍보 페이지의 SEO 요소**: `title`, `meta description`, 절대 주소 `canonical`, `hreflang`(ko, en, x-default=en), Open Graph·Twitter 카드(언어별 `img/<언어>/og.png`, `twitter:site`는 X 계정 `@plan275`), `MobileApplication` 구조화 데이터(`publisher`의 `sameAs`에 X 계정 주소 `https://x.com/plan275`, 2026-11-08), 이미지의 `alt`·`width`·`height`.
   첫 화면 이미지 말고는 `loading="lazy"`. 두 언어판의 내용을 같게 유지하고, 고치면 `sitemap.xml`의 `lastmod`도 바꾼다.
 - **판매 스토어** (2026-11-08 사용자 결정): 당분간 **App Store에서만** 판다. 홍보 페이지에 Android·Google Play·폴더블·태블릿 내용을 넣지 않는다 (앱의 Android 판은 비공개 테스트에서 멈췄다). 방침 페이지는 두 플랫폼을 다루는 법적 문서라 그대로 둔다.
   - 첫 화면에 Apple 공식 배지(`img/<언어>/app-store-badge.svg`, Apple 마케팅 도구 `toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/<ko-kr|en-us>`에서 받음)를 높이 48px로 두고 App Store로 링크한다. 배지 이미지는 고치지 않는다.
