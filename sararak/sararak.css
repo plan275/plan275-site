@@ -109,15 +109,18 @@ header nav a:hover {
   max-width: 32rem;
 }
 
-.availability {
+/* App Store 배지. Apple 공식 이미지를 고치지 않고 쓴다 (화면 높이 40px 이상, 둘레에 배지 높이의 1/4 이상 여백) */
+.store {
+  margin: 1.5rem 0 0;
+}
+
+.store a {
   display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--accent);
-  /* 좁은 화면에서 두 줄이 돼도 모서리가 어색하지 않게 알약 모양 대신 둥근 사각형 */
-  border-radius: 1rem;
-  color: var(--accent);
-  font-weight: 600;
+}
+
+.store img {
+  width: auto;
+  height: 3rem;
 }
 
 /* 휴대폰 화면 캡처 */

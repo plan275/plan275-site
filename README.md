@@ -41,8 +41,13 @@ plan275-site/
   - `robots.txt`로 크롤링을 막지 않는다. 막으면 검색 엔진이 noindex를 읽지 못해 외부 링크로 주소가 색인될 수 있다.
 - **홍보 페이지의 SEO 요소**: `title`, `meta description`, 절대 주소 `canonical`, `hreflang`(ko, en, x-default=en), Open Graph·Twitter 카드(언어별 `img/<언어>/og.png`), `MobileApplication` 구조화 데이터, 이미지의 `alt`·`width`·`height`.
   첫 화면 이미지 말고는 `loading="lazy"`. 두 언어판의 내용을 같게 유지하고, 고치면 `sitemap.xml`의 `lastmod`도 바꾼다.
+- **판매 스토어** (2026-11-08 사용자 결정): 당분간 **App Store에서만** 판다. 홍보 페이지에 Android·Google Play·폴더블·태블릿 내용을 넣지 않는다 (앱의 Android 판은 비공개 테스트에서 멈췄다). 방침 페이지는 두 플랫폼을 다루는 법적 문서라 그대로 둔다.
+  - 첫 화면에 Apple 공식 배지(`img/<언어>/app-store-badge.svg`, Apple 마케팅 도구 `toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/<ko-kr|en-us>`에서 받음)를 높이 48px로 두고 App Store로 링크한다. 배지 이미지는 고치지 않는다.
+  - 링크: 한국어판 `https://apps.apple.com/kr/app/id6825819206`, 영어판 `https://apps.apple.com/app/id6825819206`(접속한 나라의 스토어로 넘어간다). 앱 ID `6825819206`.
+  - `<meta name="apple-itunes-app" content="app-id=6825819206">`: 아이폰 Safari에서 페이지 위에 받기·열기 배너가 뜬다.
+  - 구조화 데이터의 `offers` 가격은 한국어판 KRW 6600, 영어판 USD 3.99다. App Store 가격이 바뀌면(Apple의 환율·세금 조정 포함) 함께 고친다. 지금 가격은 `https://itunes.apple.com/lookup?id=6825819206&country=kr`(`us`)로 본다.
 - **홍보 문구 원칙** (2026-10-31 사용자 결정): 쓰는 상황(공부, 잠들기 전 등)과 소개 문구는 쓰되 효과(수면 개선, 스트레스 완화 등)를 주장하지 않는다. 기능 설명은 앱 저장소의 스토어 문구(`docs/agent_docs/GUIDE-20261024-0001-store-listing.md`)와 같은 사실만 쓴다. 앱이 바뀌면 그 문서의 "앱이 바뀌면 함께 고칠 곳"을 따라 이 페이지도 고친다.
-- **이미지**: 화면 캡처는 Play 스토어용 원본(1080×1920, 1920×1080)을 `cwebp -q 80 -resize 540 960`(가로는 `960 540`)으로 줄인다. `icon.svg`는 앱 저장소 `scripts/icon/make_icons.py`의 `svg('any')` 출력이다. 아이콘이나 화면이 바뀌면 다시 만든다.
+- **이미지**: 세로 화면 캡처(`1-main`, `2-timer`, `3-favorites`)는 App Store용 iPhone 스크린샷 원본(1206×2622, 앱 저장소 밖 `~/Downloads/sararak-screenshots/{ko,en}/`)을 `cwebp -q 80 -resize 540 0`으로 줄인다 (540×1175, 2026-11-08 Android 캡처에서 바꿨다). 가로 캡처(`4-landscape`)는 아직 Android 캡처(1920×1080을 `960 540`으로)다. `icon.svg`는 앱 저장소 `scripts/icon/make_icons.py`의 `svg('any')` 출력이다. 아이콘이나 화면이 바뀌면 다시 만든다.
 - 링크와 `style.css`는 상대 경로로 쓴다. `404.html`만 어느 경로에서나 쓰이므로 `/style.css`를 쓴다 (사용자 도메인 루트 기준).
 - 한국어와 영어 페이지는 서로 링크한다 (상단 `nav`, 2026-10-22에 되살렸다). Play Console에는 방침 URL을 하나만 넣을 수 있어 영어판을 넣고, 거기서 한국어판으로 간다.
 - 앱은 방침을 주소 끝에 `#app`을 붙여 앱 안 웹 뷰로 연다. 그때는 다른 페이지로 옮겨 가지 않게 링크를 없앤다: 방침 페이지 `<body>` 맨 앞의 `<span id="app"></span>`와 `style.css`의 `#app:target` 규칙이 `nav`를 숨기고, 본문의 사이트 안 링크(`class="site-link"`)를 누를 수 없게 한다.
@@ -82,4 +87,5 @@ python3 -m http.server -d . 8000   # http://localhost:8000/
 - [ ] 루트 `index.html`의 용도를 정한다 (지금은 빈 페이지). Google 검색 결과의 파비콘은 호스트 루트 페이지의 것만 쓰므로, 루트에 아이콘이 없으면 사라락 페이지에도 기본 아이콘이 보인다
 - [ ] Google Search Console과 네이버 서치어드바이저에 `plan275.com`을 등록하고 `sitemap.xml`을 제출한다 (소유 확인은 사용자)
 - [x] "폴더블과 아이폰 듀오" 절에 화면 캡처를 더한다. 2026-11-01에 아이폰 듀오 펼침 화면을 가로(`5-duo.webp`)와 세로(`6-duo-upright.webp`) 두 장으로 넣었다 (넓은 화면에서는 같은 높이로 나란히, 좁은 화면에서는 위아래로). 시뮬레이터는 `simctl`로 펼칠 수 없어 사용자가 DeviceHub에서 펼치고, `simctl io <기기> screenshot --display=3`으로 찍어 `cwebp -q 80 -resize 960 0`(세로는 `540 0`)으로 줄였다 (상태 막대는 `simctl status_bar override --time 9:41`로 정리). Android 폴더블 테이블탑 캡처는 넣지 않는다 (2026-11-01 사용자 결정. 아이폰 듀오를 펼쳐 세로로 세운 화면과 같은 테이블탑 배치다)
-- [ ] 스토어에 출시되면 홍보 페이지의 "출시 예정"을 스토어 링크(배지)로 바꾸고, 구조화 데이터에 스토어 주소(`sameAs` 등)를 더한다
+- [x] 스토어에 출시되면 홍보 페이지의 "출시 예정"을 스토어 링크(배지)로 바꾸고, 구조화 데이터에 스토어 주소를 더한다 (2026-11-08. iOS는 2026-11-05 출시. `installUrl`·`offers`, 스마트 앱 배너)
+- [ ] 가로 화면 캡처(`4-landscape.webp`)를 iPhone 캡처로 바꾼다. `simctl`로는 회전할 수 없어 사용자가 DeviceHub에서 돌려야 한다
