@@ -1,13 +1,31 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
+<title>plan275</title>
 <!-- 네이버 서치어드바이저 소유 확인. 지우면 소유권이 풀린다 (README) -->
 <meta name="naver-site-verification" content="a051f06ebb2aded2e537f060db8369a67b8fc406">
-<title>plan275</title>
+<!-- 루트로 들어오면 사라락 영어 홍보 페이지로 보낸다 (2026-11-08 사용자 결정). 방식은 sararak/index.html과 같다:
+     JS로 그리기 전에 넘기고(뒤로 가기 기록을 남기지 않게 replace), JS가 꺼진 환경과 검색 엔진은 0초 meta refresh가 받는다 -->
+<script>location.replace("sararak/en/" + location.search + location.hash)</script>
+<meta http-equiv="refresh" content="0; url=sararak/en/">
+<link rel="canonical" href="https://plan275.com/sararak/en/">
+<!-- 사이트 파비콘. 검색 결과의 아이콘은 호스트 루트 페이지에서 가져간다. 지금은 앱이 사라락뿐이라 그 아이콘을 쓴다 -->
+<link rel="icon" href="sararak/img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="sararak/img/icon-180.png">
+<!-- 넘어가는 동안 글자가 비치지 않게 링크를 숨겼다가, refresh가 막힌 환경에서만 2초 뒤 보인다 -->
+<style>
+html { background: #0e0e0f; color-scheme: dark; }
+body { margin: 0; padding: 1rem; color: #ede8df; font-family: system-ui, sans-serif; }
+a { color: #c8a46a; }
+main { opacity: 0; animation: show 0s 2s forwards; }
+@keyframes show { to { opacity: 1; } }
+</style>
 </head>
 <body>
+<main>
+<p><a href="sararak/en/">Sararak</a> · <a href="sararak/ko/" hreflang="ko" lang="ko">사라락</a></p>
+</main>
 </body>
 </html>
