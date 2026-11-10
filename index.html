@@ -11,6 +11,17 @@
 <script>location.replace("sararak/en/" + location.search + location.hash)</script>
 <meta http-equiv="refresh" content="0; url=sararak/en/">
 <link rel="canonical" href="https://plan275.com/sararak/en/">
+<!-- 검색 결과의 사이트 이름 (2026-11-10). Google은 도메인 홈페이지의 WebSite 구조화 데이터를 가장 무겁게 보고,
+     홈페이지가 리다이렉트면 넘어간 페이지의 것을 본다. 그래서 같은 블록을 사라락 홍보 페이지 두 언어판에도 두고 og:site_name도 맞춘다 (README) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "plan275",
+  "alternateName": ["plan275.com"],
+  "url": "https://plan275.com/"
+}
+</script>
 <!-- 사이트 파비콘. 검색 결과의 아이콘은 호스트 루트 페이지에서 가져간다. 지금은 앱이 사라락뿐이라 그 아이콘을 쓴다 -->
 <link rel="icon" href="sararak/img/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="sararak/img/icon-180.png">

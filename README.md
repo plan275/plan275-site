@@ -6,7 +6,7 @@ plan275 앱의 공개 페이지(홍보·지원, 개인정보처리방침). GitHu
 
 ```
 plan275-site/
-├── index.html         # /sararak/en/으로 리다이렉트 + 사이트 파비콘 + 네이버 소유 확인 태그
+├── index.html         # /sararak/en/으로 리다이렉트 + 사이트 파비콘 + 사이트 이름(WebSite 구조화 데이터) + 네이버 소유 확인 태그
 ├── favicon.ico        # 사이트 파비콘 (사라락 아이콘 48×48)
 ├── style.css          # 모든 페이지가 함께 쓰는 스타일
 ├── 404.html
@@ -43,6 +43,11 @@ plan275-site/
   - `robots.txt`로 크롤링을 막지 않는다. 막으면 검색 엔진이 noindex를 읽지 못해 외부 링크로 주소가 색인될 수 있다.
 - **홍보 페이지의 SEO 요소**: `title`, `meta description`, 절대 주소 `canonical`, `hreflang`(ko, en, x-default=en), Open Graph·Twitter 카드(언어별 `img/<언어>/og.png`, `twitter:site`는 X 계정 `@plan275`), `MobileApplication` 구조화 데이터(`publisher`의 `sameAs`에 X 계정 주소 `https://x.com/plan275`, 2026-11-08), 이미지의 `alt`·`width`·`height`.
   첫 화면 이미지 말고는 `loading="lazy"`. 두 언어판의 내용을 같게 유지하고, 고치면 `sitemap.xml`의 `lastmod`도 바꾼다.
+- **사이트 이름** (2026-11-10): 검색 결과에서 페이지 제목 위에 보이는 사이트 이름은 `plan275`다.
+  - Google은 사이트 이름을 도메인(또는 하위 도메인)마다 하나만 정한다. `/sararak/` 같은 하위 디렉터리는 따로 가질 수 없다. 이름은 홈페이지의 `WebSite` 구조화 데이터를 가장 무겁게 보고, `og:site_name`, `title`, 웹의 다른 언급도 본다. 홈페이지가 리다이렉트면 넘어간 페이지의 것을 본다.
+  - 그래서 같은 `WebSite` 블록(`name` `plan275`, `alternateName` `plan275.com`, `url` `https://plan275.com/`)을 루트 `index.html`과 홍보 페이지 두 언어판에 두고, 홍보 페이지의 `og:site_name`도 `plan275`로 맞춘다. 새 앱 페이지에도 그대로 둔다.
+  - 이 블록이 없을 때(2026-11-10까지) 영어 검색은 도메인 `plan275.com`을, 한국어 검색은 관계없는 사이트 이름 `FamousBrains.com`을 보여 주었다. 두 도메인 사이에 연결은 없었다 (서버·등록 기록·보관 기록 확인).
+  - 반영에는 다시 크롤링되는 며칠~몇 주가 걸린다. 그 뒤에도 틀리면 공식 문서가 마지막 방법으로 드는 `name`을 `plan275.com`(도메인 소문자)으로 바꾸기를 한다 (`alternateName`의 도메인은 이미 넣었다). 사람이 직접 고쳐 주는 창구는 없다.
 - **판매 스토어** (2026-11-08 사용자 결정): 당분간 **App Store에서만** 판다. 홍보 페이지에 Android·Google Play·폴더블·태블릿 내용을 넣지 않는다 (앱의 Android 판은 비공개 테스트에서 멈췄다). 방침 페이지는 두 플랫폼을 다루는 법적 문서라 그대로 둔다.
   - 첫 화면에 Apple 공식 배지(`img/<언어>/app-store-badge.svg`, Apple 마케팅 도구 `toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/<ko-kr|en-us>`에서 받음)를 높이 48px로 두고 App Store로 링크한다. 배지 이미지는 고치지 않는다.
   - 링크: 한국어판 `https://apps.apple.com/kr/app/id6825819206`, 영어판 `https://apps.apple.com/app/id6825819206`(접속한 나라의 스토어로 넘어간다). 앱 ID `6825819206`.
